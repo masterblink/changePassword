@@ -1,9 +1,12 @@
 <?php
 function changePassword($oldPassword,$newPassword,$newPasswordCnf){
   global $message;
-  global $message_css;
+  
+	$host = "";
+	$dbuser = "";
+	$pass = "";
  
-  $link= mysql_connect ("localhost","root","mysql")or die("Could not connect: ".mysql_error());
+  $link= mysql_connect ($host,$user,$pass)or die("Could not connect: ".mysql_error());
 mysql_select_db("usuarios") or die(mysql_error());
   
   $sql = "select * from usuario where idusuario = 1";
@@ -70,12 +73,11 @@ mysql_select_db("usuarios") or die(mysql_error());
 	  $sql = "UPDATE usuario SET password='".$newPassword."' where idusuario = 1";	 
 
 	  if( $exe = mysql_query($sql,$link)){
-	  	$message_css = "yes";
 	  	return true;
 	  }
 	} else {
 		$message[] = "Error - The user does not exists";
-        return false;	
+       		 return false;	
 	}
   
 }
