@@ -79,7 +79,7 @@ mysql_select_db("usuarios") or die(mysql_error());
 		$message[] = "Error - The user does not exists";
        		 return false;	
 	}
-  
+  mysql_close($link);
 }
 
 ?>
